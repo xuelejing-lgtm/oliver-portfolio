@@ -68,8 +68,11 @@
     .hero-meta .wrap { display:flex; justify-content:space-between; font-size:9px; letter-spacing:.2em; color:#999; text-transform:uppercase; }
 
     /* About */
-    .about-grid { display:grid; grid-template-columns:.7fr 1.2fr .62fr; gap:8vw; margin-top:90px; align-items:start; }
-    .about-mark { width:120px; aspect-ratio:1; border:1px solid var(--line); border-radius:50%; display:grid; place-items:center; color:var(--accent); font-size:34px; transform:rotate(-12deg); }
+    .about-grid { display:grid; grid-template-columns:minmax(180px,.72fr) minmax(0,1.24fr) minmax(180px,.62fr); gap:clamp(36px,6vw,110px); margin-top:90px; align-items:start; }
+    .about-portrait { width:100%; max-width:300px; aspect-ratio:2/3; margin:0; overflow:hidden; position:relative; background:#111; border:1px solid var(--line); }
+    .about-portrait::after { content:""; position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.035); }
+    .about-portrait img { width:100%; height:100%; display:block; object-fit:cover; object-position:center 24%; filter:saturate(.86) contrast(1.03); transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .45s; }
+    .about-portrait:hover img { transform:scale(1.025); filter:saturate(1) contrast(1.02); }
     .about-story { font-size:clamp(22px,2.3vw,34px); line-height:1.55; letter-spacing:-.025em; margin:0; }
     .facts { display:grid; gap:25px; }
     .fact { padding-bottom:20px; border-bottom:1px solid var(--line); }
@@ -155,7 +158,7 @@
       .hero-word.three { font-size:8.2vw; }
       .hero-aside { max-width:500px; }
       .about-grid { grid-template-columns:1fr; gap:44px; }
-      .about-mark { width:84px; }
+      .about-portrait { width:min(68vw,300px); }
       .skills { grid-column:auto; margin-top:0; }
       .works { gap:70px 18px; }
       .work-card,.work-card:nth-child(n) { grid-column:span 6; margin-top:0; }
@@ -232,7 +235,7 @@
       <div class="wrap">
         <div class="reveal"><span class="eyebrow">01 / About</span><h2 class="section-title">Behind the<br>frame.</h2></div>
         <div class="about-grid reveal">
-          <div class="about-mark" aria-hidden="true">OL</div>
+          <figure class="about-portrait"><img src="assets/about-portrait.jpg" alt="廖俊名单人肖像" loading="lazy" decoding="async"></figure>
           <p class="about-story">廖俊名，导演与摄影指导。本科毕业于雪城大学建筑学专业，后于哥伦比亚大学完成高级建筑设计硕士学习。建筑训练让我从空间、结构与人的行为出发构建叙事；影视与商业内容经历，则让我将创意转化为可执行、可传播且具有实际结果的作品。</p>
           <div class="facts">
             <div class="fact"><small>Based in</small><span>上海，China</span></div>
